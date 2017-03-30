@@ -14,7 +14,8 @@ class mwdevel_argus::pap::configure (
   $pap_env_file                 = $mwdevel_argus::params::pap_env_file,
   $pap_home                     = $mwdevel_argus::params::pap_home,
   $pap_pid                      = $mwdevel_argus::params::pap_pid,
-  $pap_java_opts                = $mwdevel_argus::params::pap_java_opts,) inherits mwdevel_argus::params {
+  $pap_java_opts                = $mwdevel_argus::params::pap_java_opts,
+  $log_level                    = $mwdevel_argus::params::log_level,) inherits mwdevel_argus::params {
   #
   require mwdevel_argus::commons
   require mwdevel_argus::pap::install
@@ -32,23 +33,51 @@ class mwdevel_argus::pap::configure (
     'pap_admin':
       ensure  => file,
       path    => $pap_admin_prop,
-      content => template('mwdevel_argus/pap-admin.properties.erb'),;
+      content => template('mwdevel_argus/pap/pap-admin.properties.erb'),
+      require => File['pap_conf_dir'],;
 
     'pap_auth':
       ensure  => file,
       path    => $pap_auth,
-      content => template('mwdevel_argus/pap_authorization.ini.erb'),;
+      content => template('mwdevel_argus/pap/pap_authorization.ini.erb'),
+      require => File['pap_conf_dir'],;
 
     'pap_conf':
       ensure  => file,
       path    => $pap_conf,
-      content => template('mwdevel_argus/pap_configuration.ini.erb'),;
+      content => template('mwdevel_argus/pap/pap_configuration.ini.erb'),
+      require => File['pap_conf_dir'],;
+
+    'pap_logging_conf_dir':
+      ensure  => directory,
+      path    => "${pap_conf_dir}/logging",
+      require => File['pap_conf_dir'],;
+
+    'pap_logging_client_conf_dir':
+      ensure  => directory,
+      path    => "${pap_conf_dir}/logging/client",
+      require => File['pap_logging_conf_dir'],;
+
+    'pap_logging_standalone_conf_dir':
+      ensure  => directory,
+      path    => "${pap_conf_dir}/logging/standalone",
+      require => File['pap_logging_conf_dir'],;
+
+    'pap_logging_client':
+      ensure  => file,
+      path    => "${pap_conf_dir}/logging/client/logback.xml",
+      content => template('mwdevel_argus/pap/client/logback.xml.erb'),
+      require => File['pap_logging_client_conf_dir'],;
+
+    'pap_logging_standalone':
+      ensure  => file,
+      path    => "${pap_conf_dir}/logging/standalone/logback.xml",
+      content => template('mwdevel_argus/pap/standalone/logback.xml.erb'),
+      require => File['pap_logging_standalone_conf_dir'],;
 
     'pap_env_file':
       ensure  => file,
       path    => $pap_env_file,
       content => template('mwdevel_argus/argus-pap.erb'),
   }
-
-  File['pap_conf_dir'] -> File[['pap_admin', 'pap_auth', 'pap_conf']] -> File['pap_env_file']
 }

@@ -4,6 +4,6 @@ class mwdevel_argus::pepd::service {
   service { 'argus-pepd':
     ensure    => running,
     enable    => true,
-    subscribe => File['pep_conf', 'pepd_env_file'],
+    subscribe => File['pep_conf', 'pepd_env_file', 'pep_logging'],
   }
 }

@@ -1,6 +1,8 @@
 class mwdevel_argus::params {
   # common
+  $log_level                = 'INFO'
   $conf_dir                 = '/etc/argus'
+
   $ci_base_url              = $lsbmajdistrelease ? {
     6       => 'http://radiohead.cnaf.infn.it:9999/view/All/job/trigger-pkg.argus/BUILD_PLATFORM=centos6/lastSuccessfulBuild/artifact/repo',
     7       => 'http://radiohead.cnaf.infn.it:9999/view/All/job/trigger-pkg.argus/BUILD_PLATFORM=centos7/lastSuccessfulBuild/artifact/repo',

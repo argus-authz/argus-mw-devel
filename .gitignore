@@ -1,3 +1,4 @@
 .project
 .sonar/
+.scannerwork/
 sonar-project.properties

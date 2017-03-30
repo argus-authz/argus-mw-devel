@@ -13,7 +13,8 @@ class mwdevel_argus::pap (
   $pap_env_file                 = $mwdevel_argus::params::pap_env_file,
   $pap_home                     = $mwdevel_argus::params::pap_home,
   $pap_pid                      = $mwdevel_argus::params::pap_pid,
-  $pap_java_opts                = $mwdevel_argus::params::pap_java_opts,) inherits mwdevel_argus::params {
+  $pap_java_opts                = $mwdevel_argus::params::pap_java_opts,
+  $log_level                    = $mwdevel_argus::params::log_level,) inherits mwdevel_argus::params {
   #
   require mwdevel_argus::commons
 
@@ -34,6 +35,7 @@ class mwdevel_argus::pap (
     pap_home                     => $pap_home,
     pap_pid                      => $pap_pid,
     pap_java_opts                => $pap_java_opts,
+    log_level                    => $log_level,
   } ~>
   class { 'mwdevel_argus::pap::service': }
 }

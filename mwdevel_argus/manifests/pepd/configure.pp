@@ -1,4 +1,5 @@
 class mwdevel_argus::pepd::configure (
+  $log_level                = $mwdevel_argus::params::log_level,
   $pap_host                 = $mwdevel_argus::params::pap_host,
   $pap_port                 = $mwdevel_argus::params::pap_port,
   $pdp_host                 = $mwdevel_argus::params::pdp_host,
@@ -61,7 +62,14 @@ mwdevel_argus::params {
     'pep_conf':
       ensure  => file,
       path    => $pep_conf,
-      content => template('mwdevel_argus/pepd.ini.erb'),;
+      content => template('mwdevel_argus/pepd/pepd.ini.erb'),
+      require => File['pep_conf_dir'],;
+
+    'pep_logging':
+      ensure  => file,
+      path    => "${pep_conf_dir}/logging.xml",
+      content => template('mwdevel_argus/pepd/logging.xml.erb'),
+      require => File['pep_conf_dir'],;
 
     'account_map_file':
       ensure => file,
@@ -97,6 +105,4 @@ mwdevel_argus::params {
       path    => $pep_env_file,
       content => template('mwdevel_argus/argus-pepd.erb'),;
   }
-
-  File['pep_conf_dir'] -> File['pep_conf']
 }

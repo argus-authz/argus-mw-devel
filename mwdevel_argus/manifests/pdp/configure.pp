@@ -17,7 +17,9 @@ class mwdevel_argus::pdp::configure (
   $pdp_libdir             = $mwdevel_argus::params::pdp_libdir,
   $pdp_endorseddir        = $mwdevel_argus::params::pdp_endorseddir,
   $pdp_provideddir        = $mwdevel_argus::params::pdp_provideddir,
-  $pdp_pid                = $mwdevel_argus::params::pdp_pid,) inherits mwdevel_argus::params {
+  $pdp_pid                = $mwdevel_argus::params::pdp_pid,
+  $log_level              = $mwdevel_argus::params::log_level,) inherits mwdevel_argus::params {
+  #
   require mwdevel_argus::commons
   require mwdevel_argus::pdp::install
 
@@ -29,14 +31,18 @@ class mwdevel_argus::pdp::configure (
     'pdp_conf':
       ensure  => file,
       path    => $pdp_conf,
-      content => template('mwdevel_argus/pdp.ini.erb'),;
+      content => template('mwdevel_argus/pdp/pdp.ini.erb'),
+      require => File['pdp_conf_dir'],;
+
+    'pdp_logging':
+      ensure  => file,
+      path    => "${pdp_conf_dir}/logging.xml",
+      content => template('mwdevel_argus/pdp/logging.xml.erb'),
+      require => File['pdp_conf_dir'],;
 
     'pdp_env_file':
       ensure  => file,
       path    => $pdp_env_file,
       content => template('mwdevel_argus/argus-pdp.erb'),;
   }
-
-  File['pdp_conf_dir'] -> File['pdp_conf']
-
 }

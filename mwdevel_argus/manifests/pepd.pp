@@ -1,4 +1,5 @@
 class mwdevel_argus::pepd (
+  $log_level                = $mwdevel_argus::params::log_level,
   $pap_host                 = $mwdevel_argus::params::pap_host,
   $pap_port                 = $mwdevel_argus::params::pap_port,
   $pdp_host                 = $mwdevel_argus::params::pdp_host,
@@ -86,7 +87,7 @@ mwdevel_argus::params {
     pepd_jopts               => $pepd_jopts,
     pepd_start_jopts         => $pepd_start_jopts,
     pepd_home                => $pepd_home,
-    pepd_logdir              => $pepd_libdir,
+    pepd_logdir              => $pepd_logdir,
     pepd_libdir              => $pepd_libdir,
     pepd_endorseddir         => $pepd_endorseddir,
     pepd_provideddir         => $pepd_provideddir,
@@ -95,6 +96,7 @@ mwdevel_argus::params {
     prefer_dn_for_login_name => $prefer_dn_for_login_name,
     prefer_dn_for_primary_group_name                   => $prefer_dn_for_primary_group_name,
     no_primary_group_name_is_error                     => $no_primary_group_name_is_error,
+    log_level                => $log_level,
   } ->
   class { 'mwdevel_argus::pepd::service': }
 

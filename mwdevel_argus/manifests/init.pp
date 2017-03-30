@@ -1,4 +1,5 @@
 class mwdevel_argus (
+  $log_level                = $mwdevel_argus::params::log_level,
   $pap_host                 = $mwdevel_argus::params::pap_host,
   $pap_port                 = $mwdevel_argus::params::pap_port,
   $pap_conf_dir             = $mwdevel_argus::params::pap_conf_dir,
@@ -94,6 +95,7 @@ class mwdevel_argus (
     pap_home                     => $pap_home,
     pap_pid                      => $pap_pid,
     pap_java_opts                => $pap_java_opts,
+    log_level                    => $log_level,
   } ->
   class { 'mwdevel_argus::pdp':
     pap_host               => $pap_host,
@@ -115,6 +117,7 @@ class mwdevel_argus (
     pdp_endorseddir        => $pdp_endorseddir,
     pdp_provideddir        => $pdp_provideddir,
     pdp_pid                => $pdp_pid,
+    log_level              => $log_level,
   } ->
   class { 'mwdevel_argus::pepd':
     pap_host                 => $pap_host,
@@ -153,7 +156,7 @@ class mwdevel_argus (
     pepd_jopts               => $pepd_jopts,
     pepd_start_jopts         => $pepd_start_jopts,
     pepd_home                => $pepd_home,
-    pepd_logdir              => $pepd_libdir,
+    pepd_logdir              => $pepd_logdir,
     pepd_libdir              => $pepd_libdir,
     pepd_endorseddir         => $pepd_endorseddir,
     pepd_provideddir         => $pepd_provideddir,
@@ -162,6 +165,7 @@ class mwdevel_argus (
     prefer_dn_for_login_name => $prefer_dn_for_login_name,
     prefer_dn_for_primary_group_name                   => $prefer_dn_for_primary_group_name,
     no_primary_group_name_is_error                     => $no_primary_group_name_is_error,
+    log_level                => $log_level,
   } ->
   class { 'mwdevel_argus::bdii':
     pap_host             => $pap_host,

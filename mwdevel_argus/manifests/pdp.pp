@@ -17,7 +17,8 @@ class mwdevel_argus::pdp (
   $pdp_libdir             = $mwdevel_argus::params::pdp_libdir,
   $pdp_endorseddir        = $mwdevel_argus::params::pdp_endorseddir,
   $pdp_provideddir        = $mwdevel_argus::params::pdp_provideddir,
-  $pdp_pid                = $mwdevel_argus::params::pdp_pid,) inherits mwdevel_argus::params {
+  $pdp_pid                = $mwdevel_argus::params::pdp_pid,
+  $log_level              = $mwdevel_argus::params::log_level,) inherits mwdevel_argus::params {
   #
   require mwdevel_argus::commons
 
@@ -42,6 +43,7 @@ class mwdevel_argus::pdp (
     pdp_endorseddir        => $pdp_endorseddir,
     pdp_provideddir        => $pdp_provideddir,
     pdp_pid                => $pdp_pid,
+    log_level              => $log_level,
   } ->
   class { 'mwdevel_argus::pdp::service': }
 

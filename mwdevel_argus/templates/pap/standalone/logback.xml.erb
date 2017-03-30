@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <logger name="org.glite.authz" level="<%= @log_level %>" />
+    
+    <logger name="org.opensaml" level="WARN" />
+    <logger name="org.apache.axis.utils" level="ERROR" />
+    <logger name="org.glite.security.util" level="ERROR" />
+    <logger name="org.glite.security.trustmanager" level="INFO" />
+
+    <appender name="PROCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${PAP_HOME}/logs/pap-standalone.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        
+            <!-- daily rolling policy: %d == yyyy-MM-dd -->
+            <fileNamePattern>${PAP_HOME}/logs/pap-standalone-%d.%i.log.gz</fileNamePattern>
+            
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 10MB: %i == [0..n] -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            
+            <!-- keeps 90 days of logging -->
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS'Z',UTC} - %level [%logger{0}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="PROCESS" />
+    </root>
+</configuration>

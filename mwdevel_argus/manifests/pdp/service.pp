@@ -4,6 +4,6 @@ class mwdevel_argus::pdp::service {
   service { 'argus-pdp':
     ensure    => running,
     enable    => true,
-    subscribe => File['pdp_conf', 'pdp_env_file'],
+    subscribe => File['pdp_conf', 'pdp_env_file', 'pdp_logging'],
   }
 }

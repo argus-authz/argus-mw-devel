@@ -46,6 +46,13 @@ parserClass = <%= @common_xacml_pip_parser_class %>
 vomsInfoDir = <%= @voms_dir %>
 acceptedProfileIDs = <%= @common_xacml_pip_accepted_profile_ids %>
 
+[AUTHN_PROFILE_PIP]
+parserClass = org.glite.authz.pep.pip.provider.authnprofilespip.AuthenticationProfilePIPConfigurationParser
+authenticationProfilePolicyFile = <%= @authn_profile_pip_authn_profile_policy_file %>
+trustAnchors.directory = <%=  @authn_profile_pip_trust_anchors_dir %>
+trustAnchors.policyFilePattern = <%= @authn_profile_pip_trust_anchors_policy_file_pattern %>
+trustAnchors.refreshIntervalInSecs = <%= @authn_profile_pip_trust_anchors_refresh_interval_in_secs %>
+
 #
 # Obligation Handlers (OH) configuration
 #

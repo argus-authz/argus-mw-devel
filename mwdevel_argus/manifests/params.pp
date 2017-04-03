@@ -68,7 +68,7 @@ class mwdevel_argus::params {
   $pep_admin_host           = 'localhost'
   $pep_admin_password       = 'pepdadmin_password'
 
-  $pep_pips                 = 'REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP'
+  $pep_pips                 = 'REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP AUTHN_PROFILE_PIP'
   $pep_obligation_handlers  = 'ACCOUNTMAP_OH'
 
   $pep_enable_ssl           = true
@@ -89,6 +89,11 @@ class mwdevel_argus::params {
 
   $common_xacml_pip_parser_class                      = 'org.glite.authz.pep.pip.provider.CommonXACMLAuthorizationProfilePIPIniConfigurationParser'
   $common_xacml_pip_accepted_profile_ids              = 'http://dci-sec.org/xacml/profile/common-authz/1.1'
+
+  $authn_profile_pip_authn_profile_policy_file              = '/etc/grid-security/vo-ca-ap-file'
+  $authn_profile_pip_trust_anchors_dir                      = '/etc/grid-security/certificates'
+  $authn_profile_pip_trust_anchors_policy_file_pattern      = 'policy-*.info'
+  $authn_profile_pip_trust_anchors_refresh_interval_in_secs = 14400
 
   $account_map_parser_class = 'org.glite.authz.pep.obligation.dfpmap.DFPMObligationHandlerConfigurationParser'
   $account_map_file         = '/etc/grid-security/grid-mapfile'

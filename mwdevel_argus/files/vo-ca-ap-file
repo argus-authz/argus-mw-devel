@@ -7,10 +7,12 @@
 /alice   file:policy-igtf-classic.info, file:policy-igtf-mics.info,\
          file:policy-igtf-slcs.info,    file:policy-igtf-iota.info
 
+/test.vo file:policy-test-classic.info, file:policy-test-iota.info
+
 # Any other VO else only for classic, mics and slcs
 /*       file:policy-igtf-classic.info, file:policy-igtf-mics.info,\
-         file:policy-igtf-slcs.info
+         file:policy-igtf-slcs.info,    file:policy-test-classic.info
 
 # Any non-VOMS proxy also only for classic, mics and slcs
 "-"      file:policy-igtf-classic.info, file:policy-igtf-mics.info,\
-         file:policy-igtf-slcs.info
+         file:policy-igtf-slcs.info,    file:policy-test-classic.info

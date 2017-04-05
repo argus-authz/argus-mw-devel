@@ -44,7 +44,7 @@ class mwdevel_argus::pdp (
     pdp_provideddir        => $pdp_provideddir,
     pdp_pid                => $pdp_pid,
     log_level              => $log_level,
-  } ->
+  } ~>
   class { 'mwdevel_argus::pdp::service': }
 
 }

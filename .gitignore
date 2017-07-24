@@ -2,3 +2,4 @@
 .sonar/
 .scannerwork/
 sonar-project.properties
+.settings/

@@ -4,8 +4,8 @@ class mwdevel_argus::params {
   $conf_dir                                           = '/etc/argus'
 
   $ci_base_url                                        = $lsbmajdistrelease ? {
-    6       => 'https://cloud-vm195.cloud.cnaf.infn.it/repo/argus/nightly/el6/RPMS/',
-    7       => 'https://cloud-vm195.cloud.cnaf.infn.it/repo/argus/nightly/el7/RPMS/',
+    '6'     => 'https://cloud-vm195.cloud.cnaf.infn.it/repo/argus/nightly/el6/RPMS/',
+    '7'     => 'https://cloud-vm195.cloud.cnaf.infn.it/repo/argus/nightly/el7/RPMS/',
     default => fail('Unsupported OS'),
   }
 

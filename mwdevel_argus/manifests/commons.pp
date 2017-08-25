@@ -4,7 +4,7 @@ class mwdevel_argus::commons (
   $trust_info_dir    = $mwdevel_argus::params::trust_info_dir,) inherits mwdevel_argus::params {
   #
   case $lsbmajdistrelease {
-    6       : {
+    '6'     : {
       $repo_file          = '/etc/yum.repos.d/argus_el6.repo'
       $repo_file_template = 'mwdevel_argus/argus_el6.repo.erb'
 
@@ -12,7 +12,7 @@ class mwdevel_argus::commons (
       $install_umd_cmd    = "yum install -y ${umd_repo}"
       $umd_repo_file      = '/etc/yum.repos.d/UMD-3-base.repo'
     }
-    7       : {
+    '7'     : {
       $repo_file          = '/etc/yum.repos.d/argus_el7.repo'
       $repo_file_template = 'mwdevel_argus/argus_el7.repo.erb'
 

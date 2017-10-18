@@ -1,7 +1,7 @@
 {
   "name": "mwdevel-mwdevel_argus",
   "version": "0.1.0",
-  "author": "marcocaberletti",
+  "author": "Marco Caberletti",
   "summary": "Argus services",
   "license": "Apache-2.0",
   "source": "https://github.com/argus-authz/argus-mw-devel",

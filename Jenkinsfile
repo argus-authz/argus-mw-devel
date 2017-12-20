@@ -14,10 +14,12 @@ pipeline {
           environment name: 'CHANGE_URL', value: ''
       }
       steps {
-        script {
-          withSonarQubeEnv{
-            def sonar_opts="-Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_AUTH_TOKEN}"
-            sh "/opt/sonar-scanner/bin/sonar-scanner ${sonar_opts}"
+        container('generic-runner'){
+          script {
+            withSonarQubeEnv{
+              def sonar_opts="-Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_AUTH_TOKEN}"
+              sh "/opt/sonar-scanner/bin/sonar-scanner ${sonar_opts}"
+            }
           }
         }
       }
@@ -25,25 +27,27 @@ pipeline {
 
     stage('build') {
       steps {
-        dir('mwdevel_argus'){
-          sh '/opt/puppetlabs/bin/puppet module build'
+        container('generic-runner'){
+          dir('mwdevel_argus'){
+            sh '/opt/puppetlabs/bin/puppet module build'
+          }
         }
       }
     }
 
     stage('archive') {
       steps {
-        dir('mwdevel_argus/pkg'){
-          archiveArtifacts 'mwdevel-mwdevel_argus-*.tar.gz'
+        container('generic-runner'){
+          dir('mwdevel_argus/pkg'){
+            archiveArtifacts 'mwdevel-mwdevel_argus-*.tar.gz'
+          }
         }
       }
     }
     
    stage('result'){
      steps {
-       script {
-         currentBuild.result = 'SUCCESS'
-       }
+       script { currentBuild.result = 'SUCCESS' }
      }
    }
  }
@@ -66,4 +70,3 @@ pipeline {
     }
   }
 }
-

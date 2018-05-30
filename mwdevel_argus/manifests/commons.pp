@@ -8,9 +8,9 @@ class mwdevel_argus::commons (
       $repo_file          = '/etc/yum.repos.d/argus_el6.repo'
       $repo_file_template = 'mwdevel_argus/argus_el6.repo.erb'
 
-      $umd_repo           = 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm'
+      $umd_repo           = 'http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-4.1.3-1.el6.noarch.rpm'
       $install_umd_cmd    = "yum install -y ${umd_repo}"
-      $umd_repo_file      = '/etc/yum.repos.d/UMD-3-base.repo'
+      $umd_repo_file      = '/etc/yum.repos.d/UMD-4-base.repo'
     }
     '7'     : {
       $repo_file          = '/etc/yum.repos.d/argus_el7.repo'

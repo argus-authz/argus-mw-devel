@@ -89,6 +89,7 @@ class mwdevel_argus::params {
   $pep_obligation_handlers = 'ACCOUNTMAP_OH'
 
   $pep_enable_ssl = true
+  $pep_tls_protocol = 'TLS'
   $req_client_cert_auth = true
 
   $request_validator_pip_validate_request_subjects = true

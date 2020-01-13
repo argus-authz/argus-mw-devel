@@ -13,6 +13,7 @@ class mwdevel_argus::pepd::configure (
   $pep_pips                                           = $mwdevel_argus::params::pep_pips,
   $pep_obligation_handlers                            = $mwdevel_argus::params::pep_obligation_handlers,
   $pep_enable_ssl                                     = $mwdevel_argus::params::pep_enable_ssl,
+  $pep_tls_protocol                                   = $mwdevel_argus::params::pep_tls_protocol,
   $req_client_cert_auth                               = $mwdevel_argus::params::req_client_cert_auth,
   $request_validator_pip_validate_request_subjects    = $mwdevel_argus::params::request_validator_pip_validate_request_subjects,
   $request_validator_pip_validate_request_resources   = $mwdevel_argus::params::request_validator_pip_validate_request_resources,

@@ -90,6 +90,7 @@ class mwdevel_argus::params {
 
   $pep_enable_ssl = true
   $pep_tls_protocol = 'TLS'
+  $pep_enabled_protocols = 'TLSv1.2'
   $req_client_cert_auth = true
 
   $request_validator_pip_validate_request_subjects = true

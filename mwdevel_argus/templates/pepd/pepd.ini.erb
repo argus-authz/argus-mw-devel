@@ -20,7 +20,7 @@ servicePrivateKey = <%= @private_key_path %>
 trustInfoDir = <%= @trust_info_dir %>
 enableSSL = <%= @pep_enable_ssl %>
 tlsProtocol = <%= @pep_tls_protocol %>
-<% if @enabledProtocols -%>
+<% if @pep_enabled_protocols -%>
 enabledProtocols = <%= @pep_enabled_protocols %>
 <% end -%>
 requireClientCertAuthentication = <%= @req_client_cert_auth %>

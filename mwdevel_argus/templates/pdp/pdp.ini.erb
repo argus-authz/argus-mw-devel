@@ -15,4 +15,8 @@ serviceCertificate = <%= @certificate_path %>
 servicePrivateKey = <%= @private_key_path %>
 trustInfoDir = <%= @trust_info_dir %>
 enableSSL = <%= @pdp_enable_ssl %>
+tlsProtocol = <%= @pdp_tls_protocol %>
+<% if @pdp_enabled_protocols -%>
+enabledProtocols = <%= @pdp_enabled_protocols %>
+<% end -%>
 

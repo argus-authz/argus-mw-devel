@@ -9,6 +9,8 @@ class mwdevel_argus::pdp::configure (
   $pdp_admin_password     = $mwdevel_argus::params::pdp_admin_password,
   $pdp_retention_interval = $mwdevel_argus::params::pdp_retention_interval,
   $pdp_enable_ssl         = $mwdevel_argus::params::pdp_enable_ssl,
+  $pdp_tls_protocol       = $mwdevel_argus::params::pdp_tls_protocol,
+  $pdp_enabled_protocols  = $mwdevel_argus::params::pdp_enabled_protocols,
   $pdp_env_file           = $mwdevel_argus::params::pdp_env_file,
   $pdp_jopts              = $mwdevel_argus::params::pdp_jopts,
   $pdp_start_jopts        = $mwdevel_argus::params::pdp_start_jopts,

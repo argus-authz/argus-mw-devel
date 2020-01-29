@@ -52,6 +52,8 @@ class mwdevel_argus::params {
   $pdp_admin_password = 'pdpadmin_password'
   $pdp_retention_interval = '240'
   $pdp_enable_ssl = true
+  $pdp_tls_protocol = 'TLS'
+  $pdp_enabled_protocols = 'TLSv1.2'
   $pdp_jopts = '-Xmx256M -Djdk.tls.trustNameService=true'
   $pdp_start_jopts = ''
   $pdp_home = '/usr/share/argus/pdp'

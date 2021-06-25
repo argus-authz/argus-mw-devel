@@ -4,6 +4,7 @@ class mwdevel_argus::clients inherits mwdevel_argus::commons {
   package { 'argus-pepcli':
     ensure  => latest,
     require => File['argus-repo'],
+    install_options => ['--nogpgcheck'],
   }
 }
 
